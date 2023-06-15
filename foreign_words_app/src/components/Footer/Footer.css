@@ -4,6 +4,7 @@
   align-items: center;
   padding: 10px 20px;
   background-color: #eee;
+  border: 1px solid grey;
 }
 
 .footer-container p {

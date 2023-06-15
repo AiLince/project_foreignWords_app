@@ -10,7 +10,7 @@ function App() {
   const [wordListMode, setWordListMode] = useState('read');
 
   useEffect(() => {
-    fetch('http://itgirlschool.justmakeit.ru/api/words')
+    fetch('https://itgirlschool.justmakeit.ru/api/words')
       .then(response => response.json())
       .then(data => setWords(data));
   }, []);
@@ -22,8 +22,17 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <WordCard />
-      <WordList words={words} mode={wordListMode} toggleMode={toggleWordListMode} />
+      {words.length > 0 && (
+          <WordCard
+            word={words[0].word}
+            english={words[0].english}
+            transcription={words[0].transcription}
+            russian={words[0].russian} />
+      )}
+      <WordList
+        words={words}
+        mode={wordListMode}
+        toggleMode={toggleWordListMode} />
       <Footer />
     </div>
   );

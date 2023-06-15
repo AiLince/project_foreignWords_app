@@ -1,20 +1,15 @@
-import React from 'react';
-import './WordCard.css';
+import React from "react";
+import "./WordCard.css";
 
-function WordCard(props) {
-  const { word, translation, sound, transcription } = props;
+function WordCard({ word, english, transcription, russian }) {
   return (
-    <div className="word-card-container">
-      <h3>{word}</h3>
-      <p className="translation">{translation}</p>
-      {sound && (
-        <audio controls>
-          <source src={sound} type="audio/mpeg" />
-        </audio>
-      )}
-      {transcription && (
-        <p className="transcription">{transcription}</p>
-      )}
+    <div className="parent-element">
+        <div className="word-card">
+          <div className="word">{word}</div>
+          <div className="english">{english}</div>
+          <div className="transcription">{transcription}</div>
+          <div className="russian">{russian}</div>
+        </div>
     </div>
   );
 }
