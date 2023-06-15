@@ -2,13 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
 }
 
 .word-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   background-color: rgba(247, 247, 247, 0.8);
   border: 1px solid grey;
   border-radius: 10px;
@@ -17,6 +15,11 @@
   padding: 10px;
   width: 300px;
   height: 400px;
+  transition: transform 0.3s ease;
+}
+
+.word-card.flip {
+  transform: rotateY(180deg);
 }
 
 .english {
@@ -26,12 +29,46 @@
 }
 
 .russian {
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 5px;
 }
 
 .transcription {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: 5px;
   color: grey;
 }
+
+.front, .back {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(0deg);
+}
+
+.back {
+	transform: rotateY(180deg);
+}
+
+.parent-element.flipped .word-card {
+	transform: rotateY(180deg) scale(-1, 1);
+}
+
+.parent-element.flipped .front {
+	transform: rotateY(-180deg);
+}
+
+.parent-element.flipped .back {
+	transform: rotateY(0deg);
+}
+
