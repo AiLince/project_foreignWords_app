@@ -37,8 +37,8 @@ function WordList(props) {
       <thead>
         <tr>
           <th>Слово</th>
-          <th>Перевод</th>
           <th>Транскрипция</th>
+          <th>Перевод</th>
           <th></th>
         </tr>
       </thead>
