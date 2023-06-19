@@ -24,6 +24,11 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
+.FaEdit:hover,
+.FaTrash:hover {
+    color: rgb(110, 110, 110);
+}
+
 input[type='text'] {
     width: 100%;
     padding: 5px;
