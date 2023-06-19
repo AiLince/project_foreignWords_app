@@ -8,3 +8,11 @@ body {
     background-size: 100% 100%;
     background-attachment:fixed;
 }
+
+a:hover {
+    color:rgb(115, 115, 115);
+}
+
+button:hover {
+    background-color: rgb(115, 115, 115);
+}

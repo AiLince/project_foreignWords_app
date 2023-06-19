@@ -18,8 +18,8 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.fa-edit,
-.fa-trash {
+.FaEdit,
+.FaTrash {
     margin: 0 5px;
     cursor: pointer;
 }

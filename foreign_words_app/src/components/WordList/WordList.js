@@ -15,8 +15,8 @@ function WordList(props) {
           <td>
             {mode === 'read' ? (
               <>
-                <FaEdit onClick={() => toggleMode()} />
-                <FaTrash />
+                <FaEdit className="FaEdit" title="Редактировать слово" onClick={() => toggleMode()} />
+                <FaTrash className="FaTrash" title="Удалить слово" />
               </>
             ) : (
               <>

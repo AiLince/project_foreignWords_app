@@ -10,7 +10,7 @@ function WordCard({ word, english, transcription, russian }) {
 
   return (
     <div className={`parent-element ${flipped ? 'flipped' : ''}`} onClick={handleClick}>
-      <div className="word-card">
+      <div className="word-card" title="Нажмите на карточку, чтобы увидеть перевод">
         <div className="front">
           <div className="word">{word}</div>
           <div className="english">{english}</div>
