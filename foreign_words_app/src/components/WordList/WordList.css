@@ -49,3 +49,8 @@ button {
 button:hover {
     background-color: #222;
 }
+
+.saveBtn,
+.cancelBtn {
+    margin: 5px;
+}

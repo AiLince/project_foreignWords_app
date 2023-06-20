@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   perspective: 1000px;
-  
 }
 
 .word-card {
@@ -22,7 +21,8 @@
 }
 
 .word-card:hover {
-  background-color: rgba(237, 237, 237, 0.725);
+  background-color: rgba(255, 255, 255, 0.768);
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.3);
 }
 
 .word-card.flip {
@@ -38,6 +38,11 @@
 .russian {
   font-size: 4rem;
   margin-bottom: 5px;
+}
+
+.english::first-letter,
+.russian::first-letter {
+  text-transform: uppercase;
 }
 
 .transcription {
@@ -69,15 +74,15 @@
 	transform: rotateY(180deg);
 }
 
-.parent-element.flipped .word-card {
+.word-card.flipped {
 	transform: rotateY(180deg) scale(-1, 1);
 }
 
-.parent-element.flipped .front {
+.word-card.flipped .front {
 	transform: rotateY(-180deg);
 }
 
-.parent-element.flipped .back {
+.word-card.flipped .back {
 	transform: rotateY(0deg);
 }
 
