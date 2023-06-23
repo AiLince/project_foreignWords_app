@@ -23,16 +23,27 @@ function App() {
     <div className="App">
       <Header />
       {words.length > 0 && (
-          <WordCard
-            word={words[0].word}
-            english={words[0].english}
-            transcription={words[0].transcription}
-            russian={words[0].russian} />
+        <WordCard
+          word={words[0].word}
+          english={words[0].english}
+          transcription={words[0].transcription}
+          russian={words[0].russian}
+        />
       )}
       <WordList
         words={words}
         mode={wordListMode}
-        toggleMode={toggleWordListMode} />
+        toggleMode={toggleWordListMode}>
+        {words.map((word, index) => (
+          <WordCard
+            key={index}
+            word={word.word}
+            english={word.english}
+            transcription={word.transcription}
+            russian={word.russian}
+          />
+        ))}
+      </WordList>
       <Footer />
     </div>
   );
