@@ -3,6 +3,7 @@ import Header from './components/Header/Header';
 import WordCard from './components/WordCard/WordCard';
 import WordList from './components/WordList/WordList';
 import Footer from './components/Footer/Footer';
+import WordCarousel from './components/WordCarousel/WordCarousel'; // добавлен импорт
 import './assets/styles/style.css';
 
 function App() {
@@ -22,18 +23,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {words.length > 0 && (
-        <WordCard
-          word={words[0].word}
-          english={words[0].english}
-          transcription={words[0].transcription}
-          russian={words[0].russian}
-        />
-      )}
+      <WordCarousel words={words} /> {}
       <WordList
         words={words}
         mode={wordListMode}
-        toggleMode={toggleWordListMode}>
+        toggleMode={toggleWordListMode}
+      >
         {words.map((word, index) => (
           <WordCard
             key={index}

@@ -1,0 +1,39 @@
+.word-carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 800px;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 80px 0 80px;
+    border-radius: 5px;
+    background-color: #000000;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #fbfbfb;
+}
+
+button:active,
+button:focus {
+    outline: none;
+}
+
+.prev:disabled,
+.next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
