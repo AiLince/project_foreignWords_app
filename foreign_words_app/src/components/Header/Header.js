@@ -10,7 +10,7 @@ function Header() {
         <ul>
           <li><a href="#">Главная</a></li>
           <li><a href="#">Словарь</a></li>
-          <li><a href="#">Учебник</a></li>
+          <li><a href="#">Карточки</a></li>
         </ul>
       </nav>
       <div className="header-profile">
