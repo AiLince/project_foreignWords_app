@@ -8,7 +8,7 @@
 
 .word-card {
   position: relative;
-  background-color: rgba(247, 247, 247, 0.725);
+  background-color: rgb(247, 247, 247);
   border: 1px solid grey;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.3);
@@ -19,11 +19,26 @@
   height: 400px;
   transition: transform 0.3s ease;
   cursor: pointer;
+
 }
 
 .word-card:hover {
-  background-color: rgba(255, 255, 255, 0.768);
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(-45deg, #a6a6a6, #ffffff, #cfcfcf, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 5s ease;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .word-card.flip {

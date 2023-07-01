@@ -5,9 +5,23 @@
     position: fixed;
     width: 100%;
     padding: 10px 20px;
-    background-color: #eee;
     border: 1px solid grey;
     z-index: 1000;
+    background: linear-gradient(-45deg, #bcbcbc, #dadada, #ffffff, #ffffff);
+    background-size: 400% 400%;
+    animation: gradient 7s ease infinite;
+  }
+
+@keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   
   .header-logo {
