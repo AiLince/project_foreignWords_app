@@ -9,10 +9,56 @@ body {
     background-attachment:fixed;
 }
 
-a:hover {
-    color:rgb(115, 115, 115);
+button {
+    color:#ffffff;
+    background-image: linear-gradient(to right, #2b2b2b, #8a8a8a);
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+    border: 1px solid #b7b7b7;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 5px 15px;
+    transition: 0.5s; 
+}
+button:hover {
+    background-size: 100% 100%;
 }
 
-button:hover {
-    background-color: rgb(115, 115, 115);
+a {
+    font-weight: bold;
+    background-image: linear-gradient(
+        to right,
+        #9d9d9d,
+        #383838 50%,
+        #000000 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 5px 0;
+    position: relative;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+a:before{
+    content: '';
+    background: #000000;
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+    background-position: 0;
+}
+
+a:hover::before{
+    width: 100%;
 }

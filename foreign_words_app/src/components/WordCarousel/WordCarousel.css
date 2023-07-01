@@ -36,6 +36,7 @@ button:focus {
 .next:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    pointer-events: none;
 }
 
 .current-slide {

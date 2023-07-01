@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   perspective: 1000px;
+  margin-top: 10%;
 }
 
 .word-card {
