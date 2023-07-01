@@ -24,9 +24,9 @@
 
 .word-card:hover {
   box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.3);
-  background: linear-gradient(-45deg, #a6a6a6, #ffffff, #cfcfcf, #ffffff);
+  background: linear-gradient(-45deg, #c2c2c2, #ffffff, #cfcfcf, #ffffff);
   background-size: 400% 400%;
-  animation: gradient 5s ease;
+  animation: gradient 3s ease infinite;
 }
 
 @keyframes gradient {

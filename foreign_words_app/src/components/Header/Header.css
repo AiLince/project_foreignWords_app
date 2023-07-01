@@ -9,7 +9,7 @@
     z-index: 1000;
     background: linear-gradient(-45deg, #bcbcbc, #dadada, #ffffff, #ffffff);
     background-size: 400% 400%;
-    animation: gradient 7s ease infinite;
+    animation: gradient 10s ease infinite;
   }
 
 @keyframes gradient {
