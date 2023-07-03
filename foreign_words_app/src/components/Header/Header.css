@@ -1,27 +1,14 @@
 .header-container {
+  background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    top: 0;
     width: 100%;
     padding: 10px 20px;
     border: 1px solid grey;
     z-index: 1000;
-    background: linear-gradient(-45deg, #bcbcbc, #dadada, #ffffff, #ffffff);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-  }
-
-@keyframes gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
   }
   
   .header-logo {
