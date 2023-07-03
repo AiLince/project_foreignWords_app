@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import MainPage from './components/MainPage/MainPage';
 import CardPage from './components/CardPage/CardPage';
+import Error404Page from './components/Error404Page/Error404Page';
 import './assets/styles/style.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/cards" element={<CardPage />} />
+            <Route path="*" element={<Error404Page />} />
         </Routes>
         </div>
         <Footer />

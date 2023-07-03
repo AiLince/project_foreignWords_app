@@ -1,0 +1,21 @@
+.page-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+button {
+    font-size: 30px;
+    padding: 10px 40px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.yes-button {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.no-button {
+    margin-left: 60%;
+}
+

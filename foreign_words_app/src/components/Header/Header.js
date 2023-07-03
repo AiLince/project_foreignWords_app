@@ -23,7 +23,7 @@ function Header() {
         </ul>
       </nav>
       <div className="header-profile">
-        <a href="#">Профиль</a>
+        <Link to="/404">Профиль</Link>
         <button>Выйти</button>
       </div>
     </header>
