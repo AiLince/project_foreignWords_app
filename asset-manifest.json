@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/project_foreignWords_app/static/css/main.09af254d.css",
-    "main.js": "/project_foreignWords_app/static/js/main.ad3342e9.js",
+    "main.css": "/project_foreignWords_app/static/css/main.1619ee38.css",
+    "main.js": "/project_foreignWords_app/static/js/main.41a157e0.js",
     "static/js/787.c11acdc0.chunk.js": "/project_foreignWords_app/static/js/787.c11acdc0.chunk.js",
     "static/media/iStock-161923965.jpg": "/project_foreignWords_app/static/media/iStock-161923965.d9ca5ce244908712e047.jpg",
     "static/media/logo.png": "/project_foreignWords_app/static/media/logo.d7b39714082c30db8787.png",
     "index.html": "/project_foreignWords_app/index.html",
-    "main.09af254d.css.map": "/project_foreignWords_app/static/css/main.09af254d.css.map",
-    "main.ad3342e9.js.map": "/project_foreignWords_app/static/js/main.ad3342e9.js.map",
+    "main.1619ee38.css.map": "/project_foreignWords_app/static/css/main.1619ee38.css.map",
+    "main.41a157e0.js.map": "/project_foreignWords_app/static/js/main.41a157e0.js.map",
     "787.c11acdc0.chunk.js.map": "/project_foreignWords_app/static/js/787.c11acdc0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.09af254d.css",
-    "static/js/main.ad3342e9.js"
+    "static/css/main.1619ee38.css",
+    "static/js/main.41a157e0.js"
   ]
 }
