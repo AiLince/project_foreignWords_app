@@ -1,7 +1,16 @@
 .page-container {
     width: 100vw;
-    height: 100vh;
+    height: 75vh;
     position: relative;
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    text-shadow: 
+        -1px -1px 0 rgb(255, 255, 255),
+        1px -1px 0 rgb(255, 255, 255),
+        -1px 1px 0 rgb(255, 255, 255),
+        1px 1px 0 rgb(255, 255, 255);
 }
 
 button {
@@ -12,10 +21,40 @@ button {
 
 .yes-button {
     position: absolute;
+    z-index: 1;
     transition: all 0.3s ease;
 }
 
 .no-button {
     margin-left: 60%;
+}
+
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.132);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(-45deg, #c2c2c2, #ffffff, #cfcfcf, #ffffff);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 30%;
+    }
+    50% {
+        background-position: 100% 70%;
+    }
+    100% {
+        background-position: 20% 30%;
+    }
 }
 

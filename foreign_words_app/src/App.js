@@ -15,7 +15,7 @@ function App() {
         <Header />
         <div className="Content">
         <Routes>
-            <Route path="/" element={<MainPage />} />
+            <Route exact path="/" element={<MainPage />} />
             <Route path="/cards" element={<CardPage />} />
             <Route path="*" element={<Error404Page />} />
         </Routes>
