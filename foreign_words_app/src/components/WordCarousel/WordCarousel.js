@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import WordCard from "../WordCard/WordCard";
 import "./WordCarousel.css";
 
-function WordCarousel({ words, disableFirstAndLast, defaultIndex }) {
+function WordCarousel({ words, disableFirstAndLast, defaultIndex, incrementLearnedCount }) {
     const [currentIndex, setCurrentIndex] = useState(defaultIndex || 0);
     const [flipped, setFlipped] = useState(false);
 
@@ -55,6 +55,7 @@ function WordCarousel({ words, disableFirstAndLast, defaultIndex }) {
                     russian={words[currentIndex].russian}
                     flipped={flipped}
                     setFlipped={setFlipped}
+                    incrementLearnedCount={incrementLearnedCount} // Передача функции в компонент WordCard
                 />
             ) : (
                 <p>Идёт загрузка. Пожалуйста, подождите</p>

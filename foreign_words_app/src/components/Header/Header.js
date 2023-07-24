@@ -18,7 +18,7 @@ function Header() {
             <Link to="/dictionary">Словарь</Link>
           </li>
           <li>
-            <Link to="/cards">Карточки</Link>
+            <Link to="/game">Карточки</Link>
           </li>
         </ul>
       </nav>

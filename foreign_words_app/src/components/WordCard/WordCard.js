@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./WordCard.css";
 
 function WordCard({
@@ -8,10 +8,20 @@ function WordCard({
   russian,
   flipped,
   setFlipped,
+  incrementLearnedCount,
 }) {
+  const buttonRef = useRef(null);
+
   const handleClick = () => {
     setFlipped(!flipped);
+    incrementLearnedCount();
   };
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, []);
 
   return (
     <div className="parent-element">
