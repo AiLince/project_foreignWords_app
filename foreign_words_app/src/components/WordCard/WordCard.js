@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./WordCard.css";
 
 function WordCard({
@@ -11,10 +11,14 @@ function WordCard({
   incrementLearnedCount,
 }) {
   const buttonRef = useRef(null);
+  const [counted, setCounted] = useState(false);
 
   const handleClick = () => {
+    if (!counted) {
+      setCounted(true);
+      incrementLearnedCount();
+    }
     setFlipped(!flipped);
-    incrementLearnedCount();
   };
 
   useEffect(() => {
