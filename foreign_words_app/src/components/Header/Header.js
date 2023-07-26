@@ -15,10 +15,7 @@ function Header() {
             <Link to="/">Главная</Link> {/* Используем Link */}
           </li>
           <li>
-            <Link to="/dictionary">Словарь</Link>
-          </li>
-          <li>
-            <Link to="/game">Карточки</Link>
+            <Link to="/game">Игровой режим</Link>
           </li>
         </ul>
       </nav>

@@ -9,10 +9,13 @@
     padding: 10px 20px;
     border: 1px solid grey;
     z-index: 1000;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
   }
   
   .header-logo {
     width: 60px;
+    margin-left: 30%;
   }
   
   .header-nav {

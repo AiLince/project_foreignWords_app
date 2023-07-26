@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer-container">
-      <p>&copy; Все права защищены, 2023</p>
+      <p>&copy; AiLince, 2023</p>
       <nav>
         <ul>
           <li><a href="#">Обратная связь</a></li>
