@@ -24,8 +24,13 @@ button {
     padding: 5px 15px;
     transition: 0.5s; 
 }
-button:hover {
+button:hover,
+button:focus {
     background-size: 100% 100%;
+}
+
+button:active {
+    box-shadow: 0px 3px 3px 0px rgb(0, 0, 0);
 }
 
 a {
@@ -47,7 +52,12 @@ a {
     transition: all 0.5s ease-in-out;
 }
 
-a:hover {
+a:hover,
+a:focus { 
     background-position: 0;
+    font-size: larger;
 }
 
+a:active {
+    text-shadow: 3px 0px 5px rgba(0, 0, 0, 0.53);
+}
