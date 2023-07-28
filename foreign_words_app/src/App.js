@@ -14,11 +14,11 @@ function App() {
       <div className="App">
         <Header />
         <div className="Content">
-        <Routes>
-            <Route exact path="/" element={<MainPage />} />
-            <Route path="/game" element={<CardPage />} />
-            <Route path="*" element={<Error404Page />} />
-        </Routes>
+            <Routes>
+                <Route exact path="/" element={<MainPage />} />
+                <Route path="/game" element={<CardPage />} />
+                <Route path="*" element={<Error404Page />} />
+            </Routes>
         </div>
         <Footer />
       </div>

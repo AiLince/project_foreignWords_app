@@ -1,6 +1,14 @@
+.List {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 table {
-    width: 100%;
+    width: 85%;
     background-color: #fff;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 th,

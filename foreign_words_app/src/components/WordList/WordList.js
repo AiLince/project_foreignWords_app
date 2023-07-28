@@ -94,17 +94,19 @@ function WordList(props) {
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Слово</th>
-          <th>Транскрипция</th>
-          <th>Перевод</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>{renderRows()}</tbody>
-    </table>
+    <div className="List">
+        <table>
+          <thead>
+            <tr>
+              <th>Слово</th>
+              <th>Транскрипция</th>
+              <th>Перевод</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>{renderRows()}</tbody>
+        </table>
+    </div>
   );
 }
 

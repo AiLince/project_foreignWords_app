@@ -19,7 +19,7 @@ function MainPage() {
         <h1>Список слов</h1>
         <WordList words={words} />
     </div>
-  );
+  )
 }
 
 export default MainPage;

@@ -3,14 +3,14 @@
 }
 
 body {
-    background-image: url("images/iStock-161923965.jpg");
+    background-image: url("../images/iStock-161923965.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     background-attachment:fixed;
 }
 
 .Content {
-    margin-top: 7rem;
+    margin-top: 6rem;
 }
 
 button {

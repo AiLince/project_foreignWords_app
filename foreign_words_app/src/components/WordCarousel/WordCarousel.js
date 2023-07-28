@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import WordCard from "../WordCard/WordCard";
 import "./WordCarousel.css";
+import Kitten from '../../assets/images/kitten.gif';
 
 function WordCarousel({ words, disableFirstAndLast, defaultIndex, incrementLearnedCount }) {
     const [currentIndex, setCurrentIndex] = useState(defaultIndex || 0);
@@ -55,10 +56,13 @@ function WordCarousel({ words, disableFirstAndLast, defaultIndex, incrementLearn
                     russian={words[currentIndex].russian}
                     flipped={flipped}
                     setFlipped={setFlipped}
-                    incrementLearnedCount={incrementLearnedCount} // Передача функции в компонент WordCard
+                    incrementLearnedCount={incrementLearnedCount}
                 />
             ) : (
-                <p>Идёт загрузка. Пожалуйста, подождите</p>
+                <div className="Loading">
+                    <img src={Kitten} alt="Loading" width="70px" />
+                    <p>Идёт загрузка. Пожалуйста, подождите</p>
+                </div>
             )}
             <div className="buttons">
                 <button
