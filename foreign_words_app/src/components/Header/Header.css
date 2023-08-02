@@ -13,7 +13,34 @@
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(90deg, #484848, #ffffff, #9d9d9d, #505050);
+    background-size: 130% 100%;
+    -webkit-animation: AnimationName 10s ease infinite;
+    -moz-animation: AnimationName 10s ease infinite;
+    -o-animation: AnimationName 10s ease infinite;
+    animation: AnimationName 10s ease infinite;
   }
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
+}
   
   .header-logo {
     width: 60px;
