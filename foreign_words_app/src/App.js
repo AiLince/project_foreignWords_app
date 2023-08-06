@@ -15,8 +15,8 @@ function App() {
         <Header />
         <div className="Content">
             <Routes>
-                <Route exact path="/" element={<MainPage />} />
-                <Route path="/game" element={<CardPage />} />
+                <Route exact path="project_foreignWords_app/" element={<MainPage />} />
+                <Route path="project_foreignWords_app/game" element={<CardPage />} />
                 <Route path="*" element={<Error404Page />} />
             </Routes>
         </div>

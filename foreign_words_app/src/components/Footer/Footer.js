@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer-container">
-      <p>&copy; AiLince, 2023</p>
+      <p><strong>&copy; <a href="https://github.com/AiLince">AiLince</a>, 2023</strong></p>
       <nav>
         <ul>
           <li><a href="#">Обратная связь</a></li>

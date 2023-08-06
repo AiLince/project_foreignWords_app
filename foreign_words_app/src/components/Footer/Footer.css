@@ -2,7 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 100%;
+  width: 100%;
+  height: 22px;
+  position: fixed;
+  bottom: 0;
   padding: 10px 20px;
   background-color: #eee;
   border: 1px solid grey;
@@ -47,7 +50,7 @@
 }
 
 .footer-container nav li {
-  margin-right: 10px;
+  margin-right: 15px;
 }
 
 .footer-container nav a {

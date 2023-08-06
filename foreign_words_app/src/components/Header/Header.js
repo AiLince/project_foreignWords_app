@@ -6,21 +6,21 @@ import './Header.css';
 function Header() {
   return (
     <header className="header-container">
-      <Link to="/">
+      <Link to="project_foreignWords_app/">
         <img className="header-logo" src={logo} alt="Логотип приложения" />
       </Link>
       <nav className="header-nav">
         <ul>
           <li>
-            <Link to="/">Главная</Link> {/* Используем Link */}
+            <Link to="project_foreignWords_app/">Главная</Link> {/* Используем Link */}
           </li>
           <li>
-            <Link to="/game">Игровой режим</Link>
+            <Link to="project_foreignWords_app/game">Игровой режим</Link>
           </li>
         </ul>
       </nav>
       <div className="header-profile">
-        <Link to="/404">Профиль</Link>
+        <Link to="*">Профиль</Link>
         <button>Выйти</button>
       </div>
     </header>
