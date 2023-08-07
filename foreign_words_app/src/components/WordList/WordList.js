@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import './WordList.css';
 
@@ -7,6 +7,19 @@ function WordList(props) {
 
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedWords, setEditedWords] = useState([]);
+  const [buttonDisabled, setButtonDisabled] = useState([]);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setButtonDisabled(words.map(() => false));
+  }, [words]);
+
+  const displayMessage = (msg) => {
+    setMessage(msg);
+    setTimeout(() => {
+      setMessage('');
+    }, 3000);
+  };
 
   const toggleEditMode = (index) => {
     if (!isEditMode) {
@@ -20,48 +33,34 @@ function WordList(props) {
     setIsEditMode(!isEditMode);
   };
 
-  const handleEnglishChange = (event, index) => {
+  const handleInputChange = (event, index, property) => {
     const value = event.target.value;
     setEditedWords((prev) =>
       prev.map((word, i) => {
         if (i === index) {
-          const editedWord = { ...word, english: value };
+          const editedWord = { ...word, [property]: value };
           return editedWord;
         }
         return word;
       })
     );
-  };
-
-  const handleTranscriptionChange = (event, index) => {
-    const value = event.target.value;
-    setEditedWords((prev) =>
-      prev.map((word, i) => {
-        if (i === index) {
-          const editedWord = { ...word, transcription: value };
-          return editedWord;
-        }
-        return word;
-      })
-    );
-  };
-
-  const handleRussianChange = (event, index) => {
-    const value = event.target.value;
-    setEditedWords((prev) =>
-      prev.map((word, i) => {
-        if (i === index) {
-          const editedWord = { ...word, russian: value };
-          return editedWord;
-        }
-        return word;
-      })
+    setButtonDisabled((prev) =>
+      prev.map((disabled, i) =>
+        i === index
+          ? value.trim() === '' || value.trim() === words[index][property]
+          : disabled
+      )
     );
   };
 
   const handleSaveClick = () => {
-    console.log(editedWords);
-    setIsEditMode(false);
+    if (buttonDisabled.some((disabled) => disabled)) {
+      displayMessage('Ошибка: одно или несколько полей заполнены некорректнo');
+    } else {
+      console.log('Измененные слова:', editedWords);
+      displayMessage('Изменения успешно сохранены');
+      setIsEditMode(false);
+    }
   };
 
   const handleCancelClick = () => {
@@ -72,19 +71,44 @@ function WordList(props) {
   const renderRows = () => {
     return words.map((word, index) => {
       const editedWord = editedWords[index];
+      const borderColor = buttonDisabled[index] ? 'red' : '';
+
       return (
         <tr key={index}>
-          <td>{isEditMode ? <input type="text" value={editedWord.english} onChange={(e) => handleEnglishChange(e, index)} /> : word.english}</td>
-          <td>{isEditMode ? <input type="text" value={editedWord.transcription} onChange={(e) => handleTranscriptionChange(e, index)} /> : word.transcription}</td>
-          <td>{isEditMode ? <input type="text" value={editedWord.russian} onChange={(e) => handleRussianChange(e, index)} /> : word.russian}</td>
+          {['english', 'transcription', 'russian'].map((property) => (
+            <td key={property}>
+              {isEditMode ? (
+                <input
+                  type="text"
+                  value={editedWord[property]}
+                  onChange={(e) => handleInputChange(e, index, property)}
+                  style={{ borderColor }}
+                />
+              ) : (
+                word[property]
+              )}
+            </td>
+          ))}
           <td>
             {isEditMode ? (
               <>
-                <button className="saveBtn" onClick={handleSaveClick}>Сохранить</button>
-                <button className="cancelBtn" onClick={handleCancelClick}>Отмена</button>
+                <button
+                  className={`saveBtn${buttonDisabled[index] ? ' disabled' : ''}`}
+                  onClick={handleSaveClick}
+                  disabled={buttonDisabled[index]}
+                >
+                    Сохранить
+                </button>
+                <button className="cancelBtn" onClick={handleCancelClick}>
+                  Отмена
+                </button>
               </>
             ) : (
-              <FaEdit className="FaEdit" title="Редактировать слово" onClick={() => toggleEditMode(index)} />
+              <FaEdit
+                className="FaEdit"
+                title="Редактировать слово"
+                onClick={() => toggleEditMode(index)}
+              />
             )}
             <FaTrash className="FaTrash" title="Удалить слово" />
           </td>
@@ -94,7 +118,15 @@ function WordList(props) {
   };
 
   return (
-    <div className="List">
+    <>
+      {message && (
+        <div className="MessageContainer">
+          <div className="Message">
+            {message}
+          </div>
+        </div>
+      )}
+      <div className="List">
         <table>
           <thead>
             <tr>
@@ -106,7 +138,8 @@ function WordList(props) {
           </thead>
           <tbody>{renderRows()}</tbody>
         </table>
-    </div>
+      </div>
+    </>
   );
 }
 
