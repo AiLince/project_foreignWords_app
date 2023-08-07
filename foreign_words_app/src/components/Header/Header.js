@@ -7,15 +7,15 @@ function Header() {
   return (
     <header className="header-container">
       <Link to="project_foreignWords_app/">
-        <img className="header-logo" src={logo} alt="Логотип приложения" />
+        <img className="header-logo" src={logo} alt="Логотип приложения" title="Scrabble icons created by Febrian Hidayat - flaticon.com" />
       </Link>
       <nav className="header-nav">
         <ul>
           <li>
-            <Link to="project_foreignWords_app/">Главная</Link> {/* Используем Link */}
+            <Link to="project_foreignWords_app/" title="К списку слов">Главная</Link>
           </li>
           <li>
-            <Link to="project_foreignWords_app/game">Игровой режим</Link>
+            <Link to="project_foreignWords_app/game" title="Изучайте слова по карточкам">Игровой режим</Link>
           </li>
         </ul>
       </nav>

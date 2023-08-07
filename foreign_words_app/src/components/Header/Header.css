@@ -42,48 +42,48 @@
     100%{background-position:0% 51%}
 }
   
-  .header-logo {
+.header-logo {
     width: 60px;
     margin-left: 30%;
   }
 
-  .header-logo:hover {
+.header-logo:hover {
     width: 63px;
   }
   
-  .header-nav {
+.header-nav {
     margin-left: 20px;
   }
   
-  .header-nav ul {
+.header-nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
   }
   
-  .header-nav li {
+.header-nav li {
     margin: 10px;
   }
   
-  .header-nav a {
+.header-nav a {
     color: #333;
     text-decoration: none;
     font-size: 18px;
   }
   
-  .header-profile {
+.header-profile {
     display: flex;
     align-items: center;
   }
   
-  .header-profile a {
+.header-profile a {
     color: #333;
     text-decoration: none;
     font-size: 18px;
   }
   
-  .header-profile button {
+.header-profile button {
     padding: 10px 20px;
     margin-bottom: 5px;
     font-size: larger;
@@ -93,3 +93,10 @@
     border-radius: 10px;
     cursor: pointer;
   }
+
+.header-nav a:hover,
+.header-profile a:hover {
+  font-size: larger;
+}
+
+  
