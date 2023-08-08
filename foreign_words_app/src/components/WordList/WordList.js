@@ -58,7 +58,7 @@ function WordList(props) {
       displayMessage('Ошибка: одно или несколько полей заполнены некорректнo');
     } else {
       console.log('Измененные слова:', editedWords);
-      displayMessage('Изменения успешно сохранены');
+      displayMessage('Изменения успешно сохранены!');
       setIsEditMode(false);
     }
   };

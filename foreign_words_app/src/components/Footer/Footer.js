@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
@@ -7,9 +8,9 @@ function Footer() {
       <p><strong>&copy; <a href="https://github.com/AiLince">AiLince</a>, 2023</strong></p>
       <nav>
         <ul>
-          <li><a href="#">Как пользоваться?</a></li>
-          <li><a href="#">Обратная связь</a></li>
-          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><Link to="*">Как пользоваться?</Link></li>
+          <li><Link to="*">Обратная связь</Link></li>
+          <li><Link to="*">Политика конфиденциальности</Link></li>
         </ul>
       </nav>
     </footer>
