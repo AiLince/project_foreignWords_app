@@ -10,10 +10,20 @@ function WordCard({
   setFlipped,
   incrementLearnedCount,
 }) {
-  const buttonRef = useRef(null);
+  const cardRef = useRef(null);
   const [counted, setCounted] = useState(false);
 
   const handleClick = () => {
+    handleFlip();
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleFlip();
+    }
+  };
+
+  const handleFlip = () => {
     if (!counted) {
       setCounted(true);
       incrementLearnedCount();
@@ -22,17 +32,20 @@ function WordCard({
   };
 
   useEffect(() => {
-    if (buttonRef.current) {
-      buttonRef.current.focus();
+    if (cardRef.current) {
+      cardRef.current.focus();
     }
   }, []);
 
   return (
     <div className="parent-element">
       <div
+        ref={cardRef}
+        tabIndex="0"
         className={`word-card ${flipped ? "flipped" : ""}`}
         title="Нажмите на карточку, чтобы увидеть перевод"
         onClick={handleClick}
+        onKeyDown={handleKeyDown}
       >
         <div className="front">
           <div className="word">{word}</div>
