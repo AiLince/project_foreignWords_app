@@ -1,0 +1,79 @@
+.feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.feedback .name-input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.message-textarea {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 94%;
+    height: 150px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    margin: 10px 0 10px 0;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+.chat-comment {
+    width: 70%;
+    font-size: 18px;
+}
+
+.feedback li {
+    list-style-type: none;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.799);
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 10px 0;
+}
+
+.highlighted-comment {
+    background-color: rgba(181, 181, 181, 0.799) !important;
+}
+
+.comment-user-icon {
+    margin-right: 5px;
+}
+
+.comment-time {
+    text-align: end;
+    margin-top: 10px;
+    font-size: 12px;
+}
