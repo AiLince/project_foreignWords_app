@@ -38,10 +38,10 @@ const FeedbackPage = () => {
 
     return (
         <div className="feedback">
-            <h2>Оставьте Ваш отзыв</h2>
+            <h1>Оставьте Ваш отзыв</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="name">Имя:</label>
+                    <label htmlFor="name">Ваше имя или никнейм:</label>
                     <input
                         type="text"
                         id="name"

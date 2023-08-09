@@ -64,6 +64,11 @@ label {
     margin: 10px 0 10px 0;
 }
 
+.feedback h1 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
 .highlighted-comment {
     background-color: rgba(181, 181, 181, 0.799) !important;
 }

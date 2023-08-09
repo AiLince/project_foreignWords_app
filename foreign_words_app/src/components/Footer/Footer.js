@@ -9,7 +9,7 @@ function Footer() {
       <nav>
         <ul>
           <li><Link to="*">Как пользоваться?</Link></li>
-          <li><Link to="project_foreignWords_app/feedback">Обратная связь</Link></li>
+          <li><Link to="project_foreignWords_app/feedback" title="Оставьте Ваш отзыв">Обратная связь</Link></li>
           <li><Link to="*">Политика конфиденциальности</Link></li>
         </ul>
       </nav>
