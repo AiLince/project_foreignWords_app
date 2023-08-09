@@ -52,6 +52,7 @@ label {
 .chat-comment {
     width: 70%;
     font-size: 18px;
+    word-wrap: break-word;
 }
 
 .feedback li {
