@@ -37,13 +37,13 @@ function AddWordRow({ onSubmit }) {
         </td>
       ))}
       <td>
-        <button
-          className={`addWordBtn${isFormValid() ? '' : ' disabled'}`}
-          onClick={handleSubmit}
-          disabled={!isFormValid()}
-        >
-          Добавить слово
-        </button>
+      <button
+  className={`addWordBtn${isFormValid() ? '' : ' disabled'}`}
+  onClick={handleSubmit}
+  disabled={!isFormValid()}
+>
+  Добавить слово
+</button>
       </td>
     </tr>
   );
@@ -134,7 +134,7 @@ function WordList({ words }) {
 
   const onSaveClick = (id, editedWord) => {
     console.log("Изменённое слово:", editedWord);
-    updateWord(id, editedWord);
+    updateWord({ ...editedWord, id });
     setEditingId(null);
     displayMessage(`Слово "${editedWord.english}" успешно обновлено.`);
   };

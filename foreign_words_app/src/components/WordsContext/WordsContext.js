@@ -1,8 +1,18 @@
 import React, { createContext, useState, useEffect } from "react";
 
-const WordsContext = createContext();
+const WordsContext = createContext({
+  words: [],
+  addWord: () => {},
+  updateWord: () => {},
+  deleteWord: () => {},
+  getWordById: () => {},
+  loading: false,
+  error: false,
+  setLoading: () => {},
+  setError: () => {},
+});
 
-const WordsContextProvider = ({ children }) => {
+export const WordsContextProvider = ({ children }) => {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -11,7 +21,7 @@ const WordsContextProvider = ({ children }) => {
     const fetchWords = async () => {
       setLoading(true);
       try {
-        const response = await fetch('/api/words');
+        const response = await fetch("/api/words");
         const data = await response.json();
         setWords(data);
         setLoading(false);
@@ -19,62 +29,77 @@ const WordsContextProvider = ({ children }) => {
         console.error(error);
         setLoading(false);
         setError(true);
-        setWords([]);
       }
     };
-  
     fetchWords();
   }, []);
-  
-  const postDataToServer = async (method, id = null, data = null, onSuccess) => {
-    setLoading(true);
-    const url = id ? (
-      method === "PUT"
-        ? `/api/words/update/${id}`
-        : `/api/words/${id}`
-    ) : (
-      "/api/words"
-    );
-    const options = {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: data ? JSON.stringify(data) : null,
-    };
 
+  const addWord = async (newWord, onSuccess) => {
     try {
-      const response = await fetch(url, options);
-      const responseData = await response.json();
-
-      if (method === "POST") {
-        setWords((prevWords) => [...prevWords, responseData]);
-        if (onSuccess) {
-          onSuccess(responseData);
-        }
-      } else if (method === "PUT") {
-        setWords((prevWords) => prevWords.map((word) => word.id === responseData.id ? responseData : word));
-      } else if (method === "DELETE") {
-        setWords((prevWords) => prevWords.filter((word) => word.id !== id));
+      const response = await fetch("/api/words/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newWord),
+      });
+      const data = await response.json();
+      setWords([...words, data]);
+      if (onSuccess) {
+        onSuccess();
       }
-      setLoading(false);
     } catch (error) {
       console.error(error);
-      setLoading(false);
       setError(true);
     }
   };
 
-  const addWord = (newWord, onSuccess) => {
-    postDataToServer("POST", null, newWord, onSuccess);
+  const updateWord = async (wordToUpdate) => {
+    try {
+      const response = await fetch(`/api/words/${wordToUpdate.id}/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(wordToUpdate),
+      });
+      const data = await response.json();
+      const updatedWords = words.map((word) =>
+        word.id === data.id ? data : word
+      );
+      setWords(updatedWords);
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    }
   };
 
-  const updateWord = (wordToUpdate) => {
-    postDataToServer("PUT", wordToUpdate.id, wordToUpdate);
+  const deleteWord = async (wordId) => {
+    try {
+      await fetch(`/api/words/${wordId}/delete`, {
+        method: "POST",
+      });
+      const updatedWords = words.filter((word) => word.id !== wordId);
+      setWords(updatedWords);
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    }
   };
-  
-  const deleteWord = (wordId) => {
-    postDataToServer("DELETE", wordId);
+
+  const getWordById = async (wordId) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/api/words/${wordId}`);
+      const data = await response.json();
+      setLoading(false);
+      return data;
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+      setError(true);
+      return null;
+    }
   };
 
   return (
@@ -82,6 +107,7 @@ const WordsContextProvider = ({ children }) => {
       value={{
         words,
         addWord,
+        getWordById,
         deleteWord,
         updateWord,
         loading,
@@ -95,4 +121,4 @@ const WordsContextProvider = ({ children }) => {
   );
 };
 
-export { WordsContext, WordsContextProvider };
+export { WordsContext };
