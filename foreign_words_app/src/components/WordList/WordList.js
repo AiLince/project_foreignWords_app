@@ -1,8 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { WordsContext } from "../WordsContext/WordsContext";
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Error from '../Error/Error';
 import './WordList.css';
 
-function WordRow({ word, index, onSave, onCancel }) {
+function AddWordRow({ onSubmit }) {
+  const [newWord, setNewWord] = useState({ english: "", transcription: "", russian: "" });
+  const [inputErrors, setInputErrors] = useState({ english: true, transcription: true, russian: true });
+
+  const handleInputChange = (event, property) => {
+    const value = event.target.value;
+    setNewWord({ ...newWord, [property]: value });
+
+    const updatedErrors = { ...inputErrors, [property]: value.trim().length === 0 };
+    setInputErrors(updatedErrors);
+  };
+
+  const handleSubmit = () => {
+    onSubmit({ english: newWord.english.trim(), transcription: newWord.transcription.trim(), russian: newWord.russian.trim() });
+    setNewWord({ english: "", transcription: "", russian: "" });
+  };
+
+  const isFormValid = () => {
+    return Object.values(inputErrors).every((error) => !error) && Object.values(newWord).every(value => value !== "");
+  };
+
+  return (
+    <tr>
+      {['english', 'transcription', 'russian'].map((property) => (
+        <td key={property}>
+          <input
+            type="text"
+            value={newWord[property]}
+            onChange={(e) => handleInputChange(e, property)}
+          />
+        </td>
+      ))}
+      <td>
+        <button
+          className={`addWordBtn${isFormValid() ? '' : ' disabled'}`}
+          onClick={handleSubmit}
+          disabled={!isFormValid()}
+        >
+          Добавить слово
+        </button>
+      </td>
+    </tr>
+  );
+}
+
+
+function WordRow({ id, word, onSave, onCancel }) {
   const [editedWord, setEditedWord] = useState({ ...word });
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [inputErrors, setInputErrors] = useState({ english: false, transcription: false, russian: false });
@@ -31,13 +79,13 @@ function WordRow({ word, index, onSave, onCancel }) {
       ))}
       <td>
         <button
-          className={`saveBtn${buttonDisabled ? ' disabled' : ''}`}
-          onClick={() => onSave(index, editedWord)}
+          className={`saveBtn${buttonDisabled ? " disabled" : ""}`}
+          onClick={() => onSave(id, editedWord)}
           disabled={buttonDisabled}
         >
           Сохранить
         </button>
-        <button className="cancelBtn" onClick={() => onCancel(index)}>
+        <button className="cancelBtn" onClick={() => onCancel(id)}>
           Отмена
         </button>
       </td>
@@ -45,7 +93,7 @@ function WordRow({ word, index, onSave, onCancel }) {
   );
 }
 
-function ReadOnlyRow({ word, index, onEditClick, onDeleteClick }) {
+function ReadOnlyRow({ id, word, onEditClick, onDeleteClick }) {
   return (
     <tr>
       {['english', 'transcription', 'russian'].map((property) => (
@@ -55,12 +103,12 @@ function ReadOnlyRow({ word, index, onEditClick, onDeleteClick }) {
         <FaEdit
           className="FaEdit"
           title="Редактировать слово"
-          onClick={() => onEditClick(index)}
+          onClick={() => onEditClick(id)}
         />
         <FaTrash
           className="FaTrash"
           title="Удалить слово"
-          onClick={() => onDeleteClick(index)}
+          onClick={() => onDeleteClick(id)}
         />
       </td>
     </tr>
@@ -68,7 +116,8 @@ function ReadOnlyRow({ word, index, onEditClick, onDeleteClick }) {
 }
 
 function WordList({ words }) {
-  const [editingIndices, setEditingIndices] = useState(new Set());
+  const [editingId, setEditingId] = useState(null);
+  const { updateWord, deleteWord, addWord } = useContext(WordsContext);
   const [message, setMessage] = useState('');
 
   const displayMessage = (msg) => {
@@ -78,32 +127,33 @@ function WordList({ words }) {
     }, 3000);
   };
 
-  const toggleEditing = (index) => {
-    const newEditingIndices = new Set(editingIndices);
-    if (newEditingIndices.has(index)) {
-      newEditingIndices.delete(index);
-    } else {
-      newEditingIndices.add(index);
-    }
-    setEditingIndices(newEditingIndices);
+  const handleSubmit = (newWord) => {
+    addWord(newWord);
+    displayMessage(`Слово "${newWord.english}" успешно добавлено.`);
   };
 
-  const onSaveClick = (index, editedWord) => {
+  const onSaveClick = (id, editedWord) => {
     console.log("Изменённое слово:", editedWord);
-    displayMessage("Изменения успешно сохранены!");
-    toggleEditing(index);
+    updateWord(id, editedWord);
+    setEditingId(null);
+    displayMessage(`Слово "${editedWord.english}" успешно обновлено.`);
   };
 
-  const onCancelClick = (index) => {
-    toggleEditing(index);
+  const onCancelClick = (id) => {
+    setEditingId(null);
   };
 
-  const onDeleteClick = (index) => {
-    console.log("Удаление слова:", words[index]);
+  const onDeleteClick = (id) => {
+    console.log("Удаление слова:", words.find((word) => word.id === id));
+    deleteWord(id);
+    displayMessage(`Слово успешно удалено.`);
   };
+
+  const { error } = useContext(WordsContext);
 
   return (
     <>
+    {error && <Error message="Произошла ошибка при получении данных. Пожалуйста, обновите страницу." />}
       {message && (
         <div className="MessageContainer">
           <div className="Message">{message}</div>
@@ -120,21 +170,22 @@ function WordList({ words }) {
             </tr>
           </thead>
           <tbody>
-            {words.map((word, index) =>
-              editingIndices.has(index) ? (
+            <AddWordRow onSubmit={handleSubmit} />
+            {(Array.isArray(words) ? words : []).map((word) =>
+              editingId === word.id ? (
                 <WordRow
-                  key={index}
+                  key={word.id}
+                  id={word.id}
                   word={word}
-                  index={index}
                   onSave={onSaveClick}
                   onCancel={onCancelClick}
                 />
               ) : (
                 <ReadOnlyRow
-                  key={index}
+                  key={word.id}
+                  id={word.id}
                   word={word}
-                  index={index}
-                  onEditClick={toggleEditing}
+                  onEditClick={setEditingId}
                   onDeleteClick={onDeleteClick}
                 />
               )

@@ -1,25 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import WordList from '../WordList/WordList';
-import './MainPage.css';
+import React, { useContext } from "react";
+import { WordsContext } from "../WordsContext/WordsContext";
+import WordList from "../WordList/WordList";
+import "./MainPage.css";
 
 function MainPage() {
-  const [words, setWords] = useState([]);
-
-  useEffect(() => {
-    fetch('https://itgirlschool.justmakeit.ru/api/words')
-      .then(response => response.json())
-      .then(data => setWords(data))
-      .catch(error => {
-        console.log(error);
-      })
-  }, []);
+  const { words } = useContext(WordsContext);
 
   return (
     <div className="MainPage">
-        <h1>Список слов</h1>
-        <WordList words={words} />
+      <h1>Список слов</h1>
+      <WordList words={Array.isArray(words) ? words : []} />
     </div>
-  )
+  );
 }
 
 export default MainPage;

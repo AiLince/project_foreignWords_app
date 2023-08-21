@@ -22,6 +22,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "proxy": "http://itgirlschool.justmakeit.ru",
   "eslintConfig": {
     "extends": [
       "react-app",
