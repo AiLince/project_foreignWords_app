@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { WordsContext } from "../WordsContext/WordsContext";
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import Loader from "../Loader/Loader";
 import Error from '../Error/Error';
 import './WordList.css';
 
@@ -117,7 +118,7 @@ function ReadOnlyRow({ id, word, onEditClick, onDeleteClick }) {
 
 function WordList({ words }) {
   const [editingId, setEditingId] = useState(null);
-  const { updateWord, deleteWord, addWord } = useContext(WordsContext);
+  const { updateWord, deleteWord, addWord, loading, error } = useContext(WordsContext);
   const [message, setMessage] = useState('');
 
   const displayMessage = (msg) => {
@@ -149,18 +150,20 @@ function WordList({ words }) {
     displayMessage(`Слово успешно удалено.`);
   };
 
-  const { error } = useContext(WordsContext);
-
   return (
     <>
-    {error && <Error message="Произошла ошибка при получении данных. Пожалуйста, обновите страницу." />}
-      {message && (
-        <div className="MessageContainer">
-          <div className="Message">{message}</div>
-        </div>
-      )}
-      <div className="List">
-        <table>
+      {error && <Error message="Произошла ошибка при получении данных. Пожалуйста, обновите страницу." />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {message && (
+            <div className="MessageContainer">
+              <div className="Message">{message}</div>
+            </div>
+          )}
+          <div className="List">
+            <table>
           <thead>
             <tr>
               <th>Слово</th>
@@ -191,8 +194,10 @@ function WordList({ words }) {
               )
             )}
           </tbody>
-        </table>
-      </div>
+          </table>
+          </div>
+        </>
+      )}
     </>
   );
 }

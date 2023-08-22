@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import WordCard from "../WordCard/WordCard";
+import Loader from '../Loader/Loader';
 import "./WordCarousel.css";
-import Kitten from '../../assets/images/kitten.gif';
 
 function WordCarousel({ words, disableFirstAndLast, defaultIndex, incrementLearnedCount }) {
     const [currentIndex, setCurrentIndex] = useState(defaultIndex || 0);
@@ -59,10 +59,7 @@ function WordCarousel({ words, disableFirstAndLast, defaultIndex, incrementLearn
                     incrementLearnedCount={incrementLearnedCount}
                 />
             ) : (
-                <div className="Loading">
-                    <img src={Kitten} alt="Loading" width="70px" />
-                    <p>Идёт загрузка. Пожалуйста, подождите</p>
-                </div>
+                <Loader />
             )}
             <div className="buttons">
                 <button

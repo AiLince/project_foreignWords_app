@@ -1,0 +1,9 @@
+.Loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 25px;
+    font-weight: bold;
+}
