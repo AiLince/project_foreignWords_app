@@ -130,14 +130,14 @@ function WordList({ words }) {
 
   const handleSubmit = (newWord) => {
     addWord(newWord);
-    displayMessage(`Слово "${newWord.english}" успешно добавлено.`);
+    displayMessage(`Слово "${newWord.english}" успешно добавлено`);
   };
 
   const onSaveClick = (id, editedWord) => {
     console.log("Изменённое слово:", editedWord);
     updateWord({ ...editedWord, id });
     setEditingId(null);
-    displayMessage(`Слово "${editedWord.english}" успешно обновлено.`);
+    displayMessage(`Слово "${editedWord.english}" успешно обновлено`);
   };
 
   const onCancelClick = (id) => {
@@ -147,12 +147,12 @@ function WordList({ words }) {
   const onDeleteClick = (id) => {
     console.log("Удаление слова:", words.find((word) => word.id === id));
     deleteWord(id);
-    displayMessage(`Слово успешно удалено.`);
+    displayMessage(`Слово успешно удалено`);
   };
 
   return (
     <>
-      {error && <Error message="Произошла ошибка при получении данных. Пожалуйста, обновите страницу." />}
+      {error && <Error message="Произошла ошибка при получении данных. Пожалуйста, обновите страницу" />}
       {loading ? (
         <Loader />
       ) : (
