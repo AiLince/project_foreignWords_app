@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { inject, observer } from 'mobx-react';
+import AddWordForm from '../AddWordForm/AddWordForm';
 import WordList from '../WordList/WordList';
 import './MainPage.css';
 
-function MainPage() {
-  const [words, setWords] = useState([]);
+const MainPage = inject('wordStore')(
+  observer(({ wordStore }) => {
+    useEffect(() => {
+      fetch('/api/words')
+        .then(response => response.json())
+        .then(data => wordStore.setWords(data))
+        .catch(error => {
+          console.log(error);
+        });
+    }, [wordStore]);
 
-  useEffect(() => {
-    fetch('https://itgirlschool.justmakeit.ru/api/words')
-      .then(response => response.json())
-      .then(data => setWords(data))
-      .catch(error => {
-        console.log(error);
-      })
-  }, []);
-
-  return (
-    <div className="MainPage">
+    return (
+      <div className="MainPage">
         <h1>Список слов</h1>
-        <WordList words={words} />
-    </div>
-  )
-}
+        <AddWordForm />
+        <WordList />
+      </div>
+    );
+  }),
+);
 
 export default MainPage;

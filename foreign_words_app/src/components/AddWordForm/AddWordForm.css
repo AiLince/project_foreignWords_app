@@ -1,0 +1,22 @@
+.AddWordForm {
+    display: flex;
+    gap: 10px;
+    width: 70%;
+    margin: 0 auto;
+  }
+  
+  .AddWordForm input {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .AddWordForm input:focus {
+    border-color: #000000;
+  }
+  
+  .saveBtn {
+    font-size: 16px;
+    padding: 10px 10px;
+  }

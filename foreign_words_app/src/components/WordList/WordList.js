@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { inject, observer } from 'mobx-react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import './WordList.css';
 
@@ -67,7 +68,8 @@ function ReadOnlyRow({ word, index, onEditClick, onDeleteClick }) {
   );
 }
 
-function WordList({ words }) {
+function WordList({ wordStore }) {
+  const { words } = wordStore;
   const [editingIndices, setEditingIndices] = useState(new Set());
   const [message, setMessage] = useState('');
 
@@ -88,18 +90,44 @@ function WordList({ words }) {
     setEditingIndices(newEditingIndices);
   };
 
-  const onSaveClick = (index, editedWord) => {
-    console.log("Изменённое слово:", editedWord);
-    displayMessage("Изменения успешно сохранены!");
-    toggleEditing(index);
+  const onSaveClick = async (index, editedWord) => {
+    const word = words[index];
+    try {
+      await fetch(`/api/words/${word.id}/update`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedWord),
+      });
+      wordStore.updateWord(index, editedWord);
+      displayMessage("Изменения успешно сохранены!");
+      toggleEditing(index);
+    } catch (error) {
+      console.log(error);
+      displayMessage("Ошибка обновления слова");
+    }
   };
 
   const onCancelClick = (index) => {
     toggleEditing(index);
   };
 
-  const onDeleteClick = (index) => {
-    console.log("Удаление слова:", words[index]);
+  const onDeleteClick = async (index) => {
+    const word = words[index];
+    try {
+      await fetch(`/api/words/${word.id}/delete`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      wordStore.deleteWord(index);
+      displayMessage("Слово успешно удалено!");
+    } catch (error) {
+      console.log(error);
+      displayMessage("Ошибка удаления слова");
+    }
   };
 
   return (
@@ -146,4 +174,4 @@ function WordList({ words }) {
   );
 }
 
-export default WordList;
+export default inject('wordStore')(observer(WordList));
