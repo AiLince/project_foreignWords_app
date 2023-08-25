@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { WordsContext } from "../WordsContext/WordsContext";
+import { WordsContext } from "../../contexts/WordsContext/WordsContext";
 import WordList from "../WordList/WordList";
 import "./MainPage.css";
 

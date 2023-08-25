@@ -6,7 +6,7 @@ import MainPage from './components/MainPage/MainPage';
 import CardPage from './components/CardPage/CardPage';
 import FeedbackPage from './components/FeedbackPage/FeedbackPage';
 import Error404Page from './components/Error404Page/Error404Page';
-import { WordsContextProvider } from './components/WordsContext/WordsContext';
+import { WordsContextProvider } from './contexts/WordsContext/WordsContext';
 import './assets/styles/style.css';
 
 function App() {

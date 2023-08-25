@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { WordsContext } from "../WordsContext/WordsContext";
+import { WordsContext } from "../../contexts/WordsContext/WordsContext";
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import Loader from "../Loader/Loader";
 import Error from '../Error/Error';
