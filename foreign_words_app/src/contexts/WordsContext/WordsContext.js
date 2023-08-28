@@ -21,7 +21,7 @@ export const WordsContextProvider = ({ children }) => {
     const fetchWords = async () => {
       setLoading(true);
       try {
-        const response = await fetch("/api/words");
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/words`);
         const data = await response.json();
         setWords(data);
         setLoading(false);
@@ -36,7 +36,7 @@ export const WordsContextProvider = ({ children }) => {
 
   const addWord = async (newWord, onSuccess) => {
     try {
-      const response = await fetch("/api/words/add", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/words/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const WordsContextProvider = ({ children }) => {
 
   const updateWord = async (wordToUpdate) => {
     try {
-      const response = await fetch(`/api/words/${wordToUpdate.id}/update`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/words/${wordToUpdate.id}/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ export const WordsContextProvider = ({ children }) => {
 
   const deleteWord = async (wordId) => {
     try {
-      await fetch(`/api/words/${wordId}/delete`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/words/${wordId}/delete`, {
         method: "POST",
       });
       const updatedWords = words.filter((word) => word.id !== wordId);
@@ -90,7 +90,7 @@ export const WordsContextProvider = ({ children }) => {
   const getWordById = async (wordId) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/words/${wordId}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/words/${wordId}`);
       const data = await response.json();
       setLoading(false);
       return data;
